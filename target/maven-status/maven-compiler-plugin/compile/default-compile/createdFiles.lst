@@ -1,0 +1,8 @@
+controlador\RegistroServlet.class
+dao\UsuarioDAO.class
+conexion\PruebaConexion.class
+conexion\Conexion.class
+com\zonajava\mavenproject1\resources\JakartaEE11Resource.class
+modelo\Usuario.class
+com\zonajava\mavenproject1\JakartaRestConfiguration.class
+controlador\LoginServlet.class
