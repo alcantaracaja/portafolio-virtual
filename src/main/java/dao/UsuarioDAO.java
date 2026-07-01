@@ -2,7 +2,6 @@ package dao;
 
 import conexion.Conexion;
 import modelo.Usuario;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,16 +12,20 @@ public class UsuarioDAO {
 
         Usuario usuario = null;
 
+        String sql = "SELECT * FROM usuarios WHERE correo=? AND password=?";
+
         try {
 
             Connection con = Conexion.getConexion();
 
-            String sql = "SELECT * FROM usuarios WHERE correo=? AND password=?";
+            if (con == null) {
+                return null;
+            }
 
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, correo);
-            ps.setString(2, password);
+            ps.setString(1, correo.trim());
+            ps.setString(2, password.trim());
 
             ResultSet rs = ps.executeQuery();
 
@@ -49,42 +52,44 @@ public class UsuarioDAO {
         }
 
         return usuario;
-
     }
+
     public boolean registrar(Usuario usuario) {
 
-    boolean registrado = false;
-
-    try {
-
-        Connection con = Conexion.getConexion();
+        boolean registrado = false;
 
         String sql = "INSERT INTO usuarios(nombre, correo, password, rol) VALUES (?, ?, ?, ?)";
 
-        PreparedStatement ps = con.prepareStatement(sql);
+        try {
 
-        ps.setString(1, usuario.getNombre());
-        ps.setString(2, usuario.getCorreo());
-        ps.setString(3, usuario.getPassword());
-        ps.setString(4, usuario.getRol());
+            Connection con = Conexion.getConexion();
 
-        int filas = ps.executeUpdate();
+            if (con == null) {
+                return false;
+            }
 
-        if (filas > 0) {
-            registrado = true;
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getCorreo());
+            ps.setString(3, usuario.getPassword());
+            ps.setString(4, usuario.getRol());
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                registrado = true;
+            }
+
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
         }
 
-        ps.close();
-        con.close();
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
+        return registrado;
     }
-
-    return registrado;
-
-}
-
 }

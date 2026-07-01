@@ -24,7 +24,14 @@ public class RegistroServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmar = request.getParameter("confirmar");
 
-        // Verificar que las contraseñas coincidan
+        if (nombre == null || nombre.trim().isEmpty()
+                || correo == null || correo.trim().isEmpty()
+                || password == null || password.trim().isEmpty()) {
+
+            response.sendRedirect("registro.jsp?error=campos");
+            return;
+        }
+
         if (!password.equals(confirmar)) {
 
             response.sendRedirect("registro.jsp?error=password");
@@ -34,14 +41,12 @@ public class RegistroServlet extends HttpServlet {
 
         Usuario usuario = new Usuario();
 
-        usuario.setNombre(nombre);
-        usuario.setCorreo(correo);
-        usuario.setPassword(password);
+        usuario.setNombre(nombre.trim());
+        usuario.setCorreo(correo.trim());
+        usuario.setPassword(password.trim());
 
-        // Rol por defecto
-String rol = request.getParameter("rol");
-
-usuario.setRol(rol);
+        // Rol fijo
+        usuario.setRol("usuario");
 
         UsuarioDAO dao = new UsuarioDAO();
 

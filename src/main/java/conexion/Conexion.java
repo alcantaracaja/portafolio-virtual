@@ -5,9 +5,13 @@ import java.sql.DriverManager;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/portafolio";
+    private static final String URL =
+        "jdbc:mysql://hayabusa.proxy.rlwy.net:58847/railway?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
     private static final String USER = "root";
-    private static final String PASSWORD = "";
+
+    // Contraseña de Railway
+    private static final String PASSWORD = "NNPhCnxJLGTeHraeZjRbfLKOWyZRHEKE";
 
     public static Connection getConexion() {
 
@@ -19,17 +23,17 @@ public class Conexion {
 
             con = DriverManager.getConnection(URL, USER, PASSWORD);
 
-            System.out.println("Conectado correctamente");
+            System.out.println("==================================");
+            System.out.println("Conectado correctamente a Railway");
+            System.out.println("==================================");
 
         } catch (Exception e) {
 
-            System.out.println("Error de conexión");
+            System.out.println("Error al conectar con Railway");
             e.printStackTrace();
 
         }
 
         return con;
-
     }
-
 }

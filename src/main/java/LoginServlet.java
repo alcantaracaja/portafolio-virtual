@@ -20,32 +20,34 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Obtener datos del formulario
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
 
-        // Validar usuario
+        System.out.println("Correo recibido: " + correo);
+        System.out.println("Password recibido: " + password);
+
         UsuarioDAO dao = new UsuarioDAO();
+
         Usuario usuario = dao.validar(correo, password);
+        System.out.println("Usuario encontrado: " + usuario);
 
         if (usuario != null) {
 
             System.out.println("LOGIN CORRECTO");
 
-            // Crear sesión
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("usuario", usuario);
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario", usuario);
 
-            // Redirigir a la página protegida
             response.sendRedirect("trabajos.jsp");
 
         } else {
 
             System.out.println("LOGIN INCORRECTO");
 
-            // Volver al login mostrando el mensaje de error
             response.sendRedirect("login.jsp?error=1");
 
         }
+
     }
+
 }
