@@ -995,3 +995,186 @@ body::after{
     left:50%;
     bottom:-80px;
 }
+/*==========================================
+            RESPONSIVE
+==========================================*/
+
+/* Tablets */
+@media (max-width: 992px){
+
+    .header{
+        padding:0 5%;
+    }
+
+    .navbar{
+        gap:20px;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        gap:50px;
+        padding:130px 5% 70px;
+    }
+
+    .hero-left h1{
+        font-size:50px;
+    }
+
+    .hero-left h3{
+        font-size:22px;
+    }
+
+    .hero-left p{
+        max-width:100%;
+    }
+
+    .line{
+        margin:0 auto 30px;
+    }
+
+    .hero-right{
+        width:100%;
+    }
+
+    .circle{
+        width:380px;
+        height:380px;
+    }
+
+    .cards,
+    .stats{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+}
+
+/* Celulares */
+@media (max-width:768px){
+
+    .header{
+        height:auto;
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .logo{
+        justify-content:center;
+    }
+
+    .navbar{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .header-icons{
+        justify-content:center;
+    }
+
+    .hero{
+        padding-top:220px;
+    }
+
+    .hero-left h4{
+        font-size:18px;
+    }
+
+    .hero-left h1{
+        font-size:40px;
+    }
+
+    .hero-left h3{
+        font-size:20px;
+    }
+
+    .hero-left p{
+        font-size:15px;
+    }
+
+    .btn{
+        padding:14px 28px;
+        font-size:15px;
+    }
+
+    .circle{
+        width:300px;
+        height:300px;
+    }
+
+    .floating{
+        display:none;
+    }
+
+    .card{
+        padding:30px 20px;
+    }
+
+    .stat-box h2{
+        font-size:36px;
+    }
+
+}
+
+/* Celulares pequeños */
+@media (max-width:480px){
+
+    .hero{
+        padding:200px 20px 50px;
+    }
+
+    .hero-left h1{
+        font-size:32px;
+    }
+
+    .hero-left h3{
+        font-size:18px;
+    }
+
+    .hero-left p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    .circle{
+        width:240px;
+        height:240px;
+    }
+
+    .logo-text h2{
+        font-size:15px;
+    }
+
+    .logo-text span{
+        font-size:10px;
+    }
+
+    .navbar a{
+        font-size:14px;
+    }
+
+    .header-icons button{
+        width:40px;
+        height:40px;
+        font-size:16px;
+    }
+
+    .footer-logo h2{
+        font-size:22px;
+    }
+
+    .social a{
+        width:45px;
+        height:45px;
+    }
+
+    #topBtn{
+        width:45px;
+        height:45px;
+        right:20px;
+        bottom:20px;
+    }
+
+}

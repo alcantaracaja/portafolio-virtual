@@ -1,0 +1,333 @@
+/*==========================================================================
+    DESIGN SYSTEM & CUSTOM PROPERTIES
+==========================================================================*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap');
+:root {
+    /* Color Palette */
+    --bg-darkest: #030712;
+    --bg-card: rgba(17, 24, 39, 0.45);
+    --bg-card-hover: rgba(24, 31, 46, 0.6);
+    
+    /* Premium Gold Gradient (Champagne to Metallic Gold) */
+    --gold-primary: #e5c158;
+    --gold-secondary: #b8902d;
+    --gold-light: #fbe599;
+    --gold-gradient: linear-gradient(135deg, #fbe599 0%, #d4af37 50%, #aa7c11 100%);
+    --gold-glow: rgba(212, 175, 55, 0.25);
+    
+    /* Grays & Neutrals */
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --border-color: rgba(212, 175, 55, 0.15);
+    --border-hover: rgba(212, 175, 55, 0.45);
+    
+    /* Fonts */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Motion */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/*==========================================================================
+    RESET & BASE STYLES
+==========================================================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-darkest);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+/* Ambient Radial Glow Backgrounds */
+body::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+/*==========================================================================
+    CONTAINER
+==========================================================================*/
+.contenedor {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+}
+/*==========================================================================
+    TYPOGRAPHY
+==========================================================================*/
+.titulo {
+    font-family: var(--font-heading);
+    text-align: center;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, #ffffff 30%, #e5c158 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.2));
+    animation: tituloGlow 4s ease-in-out infinite alternate;
+}
+@keyframes tituloGlow {
+    0% {
+        filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.15));
+    }
+    100% {
+        filter: drop-shadow(0 6px 20px rgba(212, 175, 55, 0.35));
+    }
+}
+.subtitulo {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 60px;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+/*==========================================================================
+    CARDS (EJERCICIOS)
+==========================================================================*/
+.ejercicio {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 35px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: var(--transition-smooth);
+    text-align: center;
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    animation: entrada 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+/* Card glass glow highlight on top */
+.ejercicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+.ejercicio:hover {
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px var(--gold-glow),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+.ejercicio h3 {
+    font-family: var(--font-heading);
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: var(--transition-smooth);
+}
+.ejercicio:hover h3 {
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(255, 229, 153, 0.3);
+}
+.ejercicio p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-size: 16px;
+    font-weight: 400;
+}
+/*==========================================================================
+    BUTTONS (BOTONES)
+==========================================================================*/
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 12px;
+    background: var(--gold-gradient);
+    color: #030712;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+.boton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+}
+.boton:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 10px 25px rgba(212, 175, 55, 0.4),
+        0 0 10px rgba(212, 175, 55, 0.2);
+}
+.boton:hover::after {
+    left: 125%;
+}
+.boton:active {
+    transform: translateY(-1px) scale(0.99);
+}
+/* Secondary Button Outline Variant (in case you want to use it) */
+.boton-secundario {
+    background: transparent;
+    color: var(--gold-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+.boton-secundario:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: var(--gold-primary);
+    color: var(--gold-light);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+}
+/*==========================================================================
+    RETURN LINK (VOLVER)
+==========================================================================*/
+.volver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 40px auto;
+    color: var(--gold-primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+.volver::before {
+    content: '←';
+    font-size: 18px;
+    transition: var(--transition-smooth);
+}
+.volver:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+.volver:hover::before {
+    transform: translateX(-4px);
+}
+/*==========================================================================
+    ANIMATIONS & EFFECTS
+==========================================================================*/
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Delay for consecutive cards */
+.ejercicio:nth-child(2) {
+    animation-delay: 0.15s;
+}
+.ejercicio:nth-child(3) {
+    animation-delay: 0.3s;
+}
+/*==========================================================================
+    RESPONSIVE MEDIA QUERIES
+==========================================================================*/
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 50px 16px;
+    }
+    
+    .titulo {
+        font-size: 38px;
+    }
+    
+    .subtitulo {
+        font-size: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .ejercicio {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    
+    .ejercicio h3 {
+        font-size: 22px;
+    }
+    
+    .ejercicio p {
+        font-size: 15px;
+    }
+    
+    .botones {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .boton {
+        width: 100%;
+        padding: 14px 20px;
+    }
+}

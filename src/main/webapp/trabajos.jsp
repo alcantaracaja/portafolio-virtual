@@ -133,11 +133,13 @@
 
             <div class="weeks-grid">
 
-                <div class="week-card">
-                    <span>SEMANA</span>
-                    <h3>01</h3>
-                    <p>Introducción a las Pruebas de Software</p>
-                </div>
+<a href="semana1.jsp" class="week-link">
+    <div class="week-card">
+        <span>SEMANA</span>
+        <h3>01</h3>
+        <p>Introducción a las Pruebas de Software</p>
+    </div>
+</a>
 
                 <div class="week-card">
                     <span>SEMANA</span>
