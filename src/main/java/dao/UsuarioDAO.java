@@ -18,12 +18,7 @@ public class UsuarioDAO {
 
             Connection con = Conexion.getConexion();
 
-            if (con == null) {
-                return null;
-            }
-
             PreparedStatement ps = con.prepareStatement(sql);
-
             ps.setString(1, correo.trim());
             ps.setString(2, password.trim());
 
@@ -32,13 +27,11 @@ public class UsuarioDAO {
             if (rs.next()) {
 
                 usuario = new Usuario();
-
                 usuario.setId(rs.getInt("id"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setPassword(rs.getString("password"));
                 usuario.setRol(rs.getString("rol"));
-
             }
 
             rs.close();
@@ -46,9 +39,7 @@ public class UsuarioDAO {
             con.close();
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
 
         return usuario;
@@ -56,40 +47,45 @@ public class UsuarioDAO {
 
     public boolean registrar(Usuario usuario) {
 
-        boolean registrado = false;
-
-        String sql = "INSERT INTO usuarios(nombre, correo, password, rol) VALUES (?, ?, ?, ?)";
+        String checkSql = "SELECT id FROM usuarios WHERE correo = ?";
+        String insertSql = "INSERT INTO usuarios(nombre, correo, password, rol) VALUES (?, ?, ?, ?)";
 
         try {
 
             Connection con = Conexion.getConexion();
 
-            if (con == null) {
+            PreparedStatement ps1 = con.prepareStatement(checkSql);
+            ps1.setString(1, usuario.getCorreo());
+
+            ResultSet rs = ps1.executeQuery();
+
+            if (rs.next()) {
+                rs.close();
+                ps1.close();
+                con.close();
                 return false;
             }
 
-            PreparedStatement ps = con.prepareStatement(sql);
+            rs.close();
+            ps1.close();
 
-            ps.setString(1, usuario.getNombre());
-            ps.setString(2, usuario.getCorreo());
-            ps.setString(3, usuario.getPassword());
-            ps.setString(4, usuario.getRol());
+            PreparedStatement ps2 = con.prepareStatement(insertSql);
+            ps2.setString(1, usuario.getNombre());
+            ps2.setString(2, usuario.getCorreo());
+            ps2.setString(3, usuario.getPassword());
+            ps2.setString(4, usuario.getRol());
 
-            int filas = ps.executeUpdate();
+            int filas = ps2.executeUpdate();
 
-            if (filas > 0) {
-                registrado = true;
-            }
-
-            ps.close();
+            ps2.close();
             con.close();
 
+            return filas > 0;
+
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
 
-        return registrado;
+        return false;
     }
 }
