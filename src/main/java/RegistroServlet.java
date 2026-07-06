@@ -4,6 +4,7 @@ import dao.UsuarioDAO;
 import modelo.Usuario;
 
 import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +26,7 @@ public class RegistroServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmar = request.getParameter("confirmar");
 
-        // Validar campos
+        // 🔴 Validación de campos
         if (nombre == null || nombre.trim().isEmpty()
                 || correo == null || correo.trim().isEmpty()
                 || password == null || password.trim().isEmpty()
@@ -35,19 +36,17 @@ public class RegistroServlet extends HttpServlet {
             return;
         }
 
-        // Validar contraseña
-        if (!password.equals(confirmar)) {
+        // 🔴 Validación de contraseñas
+        if (!password.equals(confirmar)) { 
             response.sendRedirect("registro.jsp?error=password");
             return;
-        }
+        }  
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre.trim());
-        usuario.setCorreo(correo.trim().toLowerCase());
+        usuario.setCorreo(correo.trim().toLowerCase()); // 🔥 mejora importante
         usuario.setPassword(password.trim());
-
-        // 🔥 IMPORTANTE: debe coincidir con tu BD
-        usuario.setRol("alumno");
+        usuario.setRol("usuario");
 
         UsuarioDAO dao = new UsuarioDAO();
 
