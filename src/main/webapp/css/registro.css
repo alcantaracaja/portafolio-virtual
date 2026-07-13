@@ -309,16 +309,169 @@ form p{
 
 }
 
-/* RESPONSIVE */
 
-@media(max-width:480px){
+/* Pantallas grandes */
+@media screen and (min-width:1200px){
 
     .register-container{
+        width:450px;
+    }
 
-        width:95%;
+}
 
-        padding:30px 20px;
+/* Tablets */
+@media screen and (max-width:992px){
 
+    body{
+        padding:20px;
+        height:auto;
+        min-height:100vh;
+        overflow-y:auto;
+    }
+
+    .register-container{
+        width:90%;
+        max-width:430px;
+        padding:35px 30px;
+    }
+
+}
+
+/* Tablets pequeñas */
+@media screen and (max-width:768px){
+
+    body{
+        padding:20px;
+        height:auto;
+        min-height:100vh;
+        overflow-y:auto;
+    }
+
+    .register-container{
+        width:100%;
+        max-width:420px;
+        padding:30px 25px;
+        border-radius:18px;
+    }
+
+    .logo img{
+        width:75px;
+    }
+
+    .logo h2{
+        font-size:24px;
+    }
+
+    form h1{
+        font-size:28px;
+    }
+
+    form p{
+        font-size:14px;
+    }
+
+    .input-box input,
+    .select-box select,
+    .btn-register{
+        height:48px;
+        font-size:14px;
+    }
+
+}
+
+/* Celulares */
+@media screen and (max-width:480px){
+
+    body{
+        padding:15px;
+        height:auto;
+        min-height:100vh;
+        overflow-y:auto;
+    }
+
+    .register-container{
+        width:100%;
+        padding:25px 18px;
+        border-radius:16px;
+    }
+
+    .logo img{
+        width:60px;
+    }
+
+    .logo h2{
+        font-size:22px;
+    }
+
+    .logo span{
+        font-size:12px;
+    }
+
+    form h1{
+        font-size:24px;
+    }
+
+    form p{
+        font-size:13px;
+        margin-bottom:20px;
+    }
+
+    .input-box{
+        margin-bottom:15px;
+    }
+
+    .input-box input,
+    .select-box select{
+        height:46px;
+        font-size:13px;
+        padding-left:42px;
+    }
+
+    .input-box i{
+        left:14px;
+        font-size:15px;
+    }
+
+    .btn-register{
+        height:46px;
+        font-size:14px;
+    }
+
+    .back{
+        font-size:14px;
+    }
+
+    .mensaje-error{
+        font-size:13px;
+        padding:10px;
+    }
+
+}
+
+/* Celulares muy pequeños */
+@media screen and (max-width:360px){
+
+    .register-container{
+        padding:20px 15px;
+    }
+
+    .logo img{
+        width:55px;
+    }
+
+    .logo h2{
+        font-size:20px;
+    }
+
+    form h1{
+        font-size:22px;
+    }
+
+    .input-box input,
+    .select-box select,
+    .btn-register{
+        height:44px;
+        font-size:12px;
     }
 
 }

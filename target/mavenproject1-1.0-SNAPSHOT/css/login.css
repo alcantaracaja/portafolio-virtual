@@ -753,3 +753,188 @@ form p{
     margin-right:8px;
 
 }
+
+/*==================================================
+                RESPONSIVE MEJORADO
+==================================================*/
+
+/* Pantallas grandes */
+@media screen and (min-width: 1200px){
+
+    .login-container{
+        width: 450px;
+    }
+
+}
+
+/* Tablets */
+@media screen and (max-width: 992px){
+
+    body{
+        padding:25px;
+        overflow-y:auto;
+    }
+
+    .login-container{
+        width:90%;
+        max-width:450px;
+        padding:35px 30px;
+    }
+
+}
+
+/* Tablets pequeñas */
+@media screen and (max-width:768px){
+
+    body{
+        align-items:center;
+        padding:20px;
+        overflow-y:auto;
+    }
+
+    .login-container{
+        width:100%;
+        max-width:420px;
+        padding:30px 25px;
+        border-radius:20px;
+    }
+
+    .logo img{
+        width:70px;
+    }
+
+    .logo h2{
+        font-size:24px;
+    }
+
+    form h1{
+        font-size:28px;
+    }
+
+    form p{
+        font-size:14px;
+    }
+
+    .input-box input,
+    .input-box select{
+        height:52px;
+        font-size:14px;
+    }
+
+    .btn-login,
+    .btn-register{
+        height:52px;
+        font-size:15px;
+    }
+
+}
+
+/* Celulares */
+@media screen and (max-width:480px){
+
+    body{
+        padding:15px;
+        overflow-y:auto;
+    }
+
+    .login-container{
+        width:100%;
+        padding:25px 18px;
+        border-radius:16px;
+    }
+
+    .logo img{
+        width:60px;
+    }
+
+    .logo h2{
+        font-size:21px;
+    }
+
+    .logo span{
+        font-size:12px;
+    }
+
+    form h1{
+        font-size:24px;
+    }
+
+    form p{
+        font-size:13px;
+        margin-bottom:20px;
+    }
+
+    .input-box{
+        margin-bottom:18px;
+    }
+
+    .input-box input,
+    .input-box select{
+        height:48px;
+        padding-left:48px;
+        font-size:13px;
+    }
+
+    .input-box i:first-child{
+        left:15px;
+        font-size:16px;
+    }
+
+    .togglePassword{
+        right:15px;
+        font-size:16px;
+    }
+
+    .options{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+        font-size:13px;
+    }
+
+    .btn-login,
+    .btn-register{
+        height:48px;
+        font-size:14px;
+    }
+
+    .mensaje-error,
+    .mensaje-exito{
+        font-size:13px;
+        padding:10px;
+    }
+
+}
+
+/* Celulares muy pequeños */
+@media screen and (max-width:360px){
+
+    .login-container{
+        padding:20px 15px;
+    }
+
+    .logo img{
+        width:55px;
+    }
+
+    .logo h2{
+        font-size:19px;
+    }
+
+    form h1{
+        font-size:22px;
+    }
+
+    .input-box input,
+    .input-box select{
+        height:45px;
+        font-size:12px;
+    }
+
+    .btn-login,
+    .btn-register{
+        height:45px;
+        font-size:13px;
+    }
+
+}
