@@ -75,13 +75,17 @@
 
                 <div class="hero-text">
 
-                    <h4>Hola, soy</h4>
+    <h4>Hola, soy</h4>
 
-                    <h1>
-                        <%= usuario.getNombre()%>
-                    </h1>
+    <h1>
+        <% if(usuario != null){ %>
+            <%= usuario.getNombre() %>
+        <% } else { %>
+            Yenner Alcántara
+        <% } %>
+    </h1>
 
-                    <h3>Estudiante de Diseño y Programación Web</h3>
+    <h3>Estudiante de Diseño y Programación Web</h3>
 
                     <p>
                         Bienvenido a mi Portafolio Virtual.
