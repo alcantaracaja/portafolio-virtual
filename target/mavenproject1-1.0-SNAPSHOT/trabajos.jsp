@@ -1,12 +1,14 @@
 <%@page import="modelo.Usuario"%>
+<%@page import="dao.TrabajoDAO"%>
+<%@page import="modelo.Trabajo"%>
+<%@page import="java.util.List"%>
 
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-    if (usuario == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
+    TrabajoDAO dao = new TrabajoDAO();
+    List<Trabajo> listaTrabajos = dao.listarTrabajos();
+
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,10 +46,25 @@
                     <a href="trabajos.jsp" class="active">Mis Trabajos</a>
                 </nav>
 
-                <div class="header-icons">
-                    <i class="fa-regular fa-sun"></i>
-                    <i class="fa-regular fa-user"></i>
-                </div>
+<div class="header-icons">
+
+    <i class="fa-regular fa-sun"></i>
+
+    <% if(usuario != null){ %>
+
+        <a href="dashboard.jsp" title="Panel de Administración">
+            <i class="fa-solid fa-user-shield"></i>
+        </a>
+
+    <% } else { %>
+
+        <a href="login.jsp" title="Administrador">
+            <i class="fa-solid fa-user-shield"></i>
+        </a>
+
+    <% } %>
+
+</div>
 
             </div>
         </header>
@@ -118,6 +135,14 @@
             </div>
         </section>
 
+        <div style="text-align:center; margin:20px;">
+    <h3>
+        Trabajos registrados: <%= listaTrabajos.size() %>
+    </h3>
+</div>
+
+</div>
+    
         <!-- SEMANAS -->
         <section class="weeks">
             <div class="container">
@@ -131,133 +156,57 @@
                     </a>
                 </div>
 
-                <div class="weeks-grid">
+   <div class="weeks-grid">
 
-                    <a href="semana1.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>01</h3>
-                            <p>Implementar programas utilizando lenguaje Java</p>
-                        </div>
-                    </a>
+<%
+for(Trabajo t : listaTrabajos){
+%>
 
-                    <a href="semana2.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>02</h3>
-                            <p>Implementar programas utilizando lenguaje Java</p>
-                        </div>
-                    </a>
+<a href="detalleTrabajo.jsp?id=<%= t.getId() %>" class="week-link">
 
-                    <a href="semana3.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>03</h3>
-                            <p>IMPLEMENTACIÓN DE PROGRAMAS UTILIZANDO EL LENGUAJE JAVA</p>
-                        </div>
-                    </a>
+    <div class="week-card">
 
-                    <a href="semana4.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>04</h3>
-                            <p>Implementar programas utilizando Sentencias Selectivas</p>
-                        </div>
-                    </a>
+        <span>SEMANA <%= String.format("%02d", t.getSemana()) %></span>
 
-                    <a href="semana5.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>05</h3>
-                            <p>Implementar programas utilizando Sentencias Selectivas</p>
-                        </div>
-                    </a>
+        <h3>
+            <%= t.getTitulo() %>
+        </h3>
 
+        <p>
+            <%= t.getDescripcion() %>
+        </p>
 
-                    <a href="semana6.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>06</h3>
-                            <p>Implementar programas utilizando Programación Orientada a Objetos</p>
-                        </div>
-                    </a>
+        <div class="archivos">
 
-                    <a href="semana7.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>07</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+            <% if(t.getPdf()!=null && !t.getPdf().isEmpty()){ %>
+                <span>
+                    ? PDF
+                </span>
+            <% } %>
 
-                    <a href="semana8.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>08</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+            <% if(t.getZip()!=null && !t.getZip().isEmpty()){ %>
+                <span>
+                    ? ZIP
+                </span>
+            <% } %>
 
-                    <a href="semana9.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>09</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+            <% if(t.getImagen()!=null && !t.getImagen().isEmpty()){ %>
+                <span>
+                    ? Imagen
+                </span>
+            <% } %>
 
-                    <a href="semana10.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>10</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+        </div>
 
-                    <a href="semana11.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>12</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+    </div>
 
-                    <a href="semana13.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>13</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+</a>
 
-                    <a href="semana14.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>14</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
+<%
+}
+%>
 
-                    <a href="semana15.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>15</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
-
-                    <a href="semana16.jsp" class="week-link">
-                        <div class="week-card">
-                            <span>SEMANA</span>
-                            <h3>16</h3>
-                            <p>Introducción a las Pruebas de Software</p>
-                        </div>
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
+</div>
 
         <!-- PROYECTO Y CONTACTO -->
         <section class="bottom-section">

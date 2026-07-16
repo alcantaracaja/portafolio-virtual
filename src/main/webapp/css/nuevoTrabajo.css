@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+
+
+:root{
+    --black:#030303;
+    --dark:#0b0b0b;
+
+    --gold:#d4af37;
+    --gold-light:#ffe58a;
+
+    --white:#ffffff;
+    --gray:#a7a7a7;
+}
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        rgba(212,175,55,.18),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #000,
+        #111
+    );
+
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    overflow:hidden;
+
+}
+
+
+
+/* LUCES DE FONDO */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:rgba(212,175,55,.12);
+
+    filter:blur(100px);
+
+    top:-200px;
+    right:-150px;
+
+
+    animation:moveLight 8s infinite alternate;
+
+}
+
+
+
+body::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    background:rgba(212,175,55,.08);
+
+    filter:blur(100px);
+
+
+    bottom:-150px;
+    left:-100px;
+
+
+    animation:moveLight 10s infinite alternate-reverse;
+
+}
+
+
+
+@keyframes moveLight{
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+    to{
+
+        transform:translate(60px,40px);
+
+    }
+
+}
+
+
+
+
+
+/* CONTENEDOR */
+
+
+.form-container{
+
+    width:100%;
+
+    max-width:850px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+
+/* TARJETA */
+
+
+.form-card{
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(20,20,20,.95),
+        rgba(5,5,5,.95)
+    );
+
+
+    border-radius:25px;
+
+
+    padding:50px;
+
+
+    border:1px solid rgba(212,175,55,.35);
+
+
+    box-shadow:
+
+    0 0 30px rgba(212,175,55,.15),
+
+    inset 0 0 30px rgba(212,175,55,.05);
+
+
+
+    animation:
+
+    aparecer 1s ease,
+
+    flotando 5s infinite ease-in-out;
+
+
+
+}
+
+
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px) scale(.9);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+
+
+@keyframes flotando{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+
+
+
+
+/* TITULO */
+
+
+.form-card h1{
+
+
+    text-align:center;
+
+
+    font-family:'Cinzel',serif;
+
+
+    font-size:3rem;
+
+
+    margin-bottom:40px;
+
+
+
+    color:var(--gold);
+
+
+    text-shadow:
+
+    0 0 15px rgba(212,175,55,.5);
+
+
+
+}
+
+
+
+
+
+/* CAMPOS */
+
+
+.form-group{
+
+    margin-bottom:25px;
+
+}
+
+
+
+.form-group label{
+
+
+    color:var(--gold-light);
+
+
+    font-weight:600;
+
+
+    letter-spacing:1px;
+
+
+    display:block;
+
+
+    margin-bottom:10px;
+
+}
+
+
+
+
+
+.form-group input,
+.form-group textarea{
+
+
+    width:100%;
+
+
+    padding:15px 18px;
+
+
+    background:#050505;
+
+
+    border:1px solid rgba(212,175,55,.3);
+
+
+    border-radius:12px;
+
+
+    color:white;
+
+
+    outline:none;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+
+
+.form-group textarea{
+
+    min-height:150px;
+
+    resize:none;
+
+}
+
+
+
+
+
+.form-group input:hover,
+.form-group textarea:hover{
+
+
+    border-color:var(--gold);
+
+
+}
+
+
+
+
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+
+    border-color:var(--gold);
+
+
+    box-shadow:
+
+
+    0 0 20px rgba(212,175,55,.35);
+
+
+    transform:scale(1.02);
+
+
+}
+
+
+
+
+
+
+
+/* BOTONES */
+
+
+.botones{
+
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+
+
+
+
+.btn{
+
+
+    padding:15px 35px;
+
+
+    border-radius:30px;
+
+
+    text-decoration:none;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    border:1px solid var(--gold);
+
+
+    color:var(--gold);
+
+
+    background:transparent;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+
+
+.btn:hover{
+
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+    0 0 25px rgba(212,175,55,.5);
+
+
+}
+
+
+
+
+
+.btn-guardar{
+
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    #ffe58a,
+
+    #d4af37
+
+    );
+
+
+    color:black;
+
+
+    border:none;
+
+}
+
+
+
+.btn-guardar:hover{
+
+
+    box-shadow:
+
+    0 0 35px rgba(212,175,55,.8);
+
+
+}
+
+
+
+
+
+.btn-volver{
+
+    color:white;
+
+}
+
+
+
+
+
+
+@media(max-width:700px){
+
+
+    .form-card{
+
+        padding:30px;
+
+    }
+
+
+    .form-card h1{
+
+        font-size:2rem;
+
+    }
+
+
+    .botones{
+
+        flex-direction:column;
+
+    }
+
+}

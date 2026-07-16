@@ -40,14 +40,14 @@
 
             <h2>PORTAFOLIO VIRTUAL</h2>
 
-            <span>YENNER ALCÁNTARA CAJA</span>
+            <span>Panel de Administración</span>
 
         </div>
 
         <!-- Formulario -->
         <form id="loginForm" action="LoginServlet" method="post">
 
-            <h1>Iniciar Sesión</h1>
+            <h1>Administrador</h1>
 
             <%
     String error = request.getParameter("error");
@@ -77,8 +77,7 @@
 %>
 
             <p>
-                Ingrese sus credenciales para acceder
-                al sistema del Portafolio Virtual.
+                Solo el administrador puede acceder al panel de gestión del Portafolio Virtual.
             </p>
 
             <!-- Correo -->
@@ -132,14 +131,6 @@
 
             </button>
 
-            <!-- Botón Registrarse -->
-            <a href="registro.jsp" class="btn-register">
-
-                <i class="fa-solid fa-user-plus"></i>
-
-                Registrarse
-
-            </a>
 
             <!-- Volver -->
             <a href="index.jsp" class="back">

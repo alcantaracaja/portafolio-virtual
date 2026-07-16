@@ -1,7 +1,4 @@
-<%@page import="modelo.Usuario"%>
-<%
-Usuario usuario = (Usuario) session.getAttribute("usuario");
-%>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +8,6 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Portafolio Virtual | Yhenner Alcántara Caja</title>
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -52,29 +48,19 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
             <a href="trabajos.jsp">Mis Trabajos</a>
         </nav>
 
-        <div class="header-icons">
+<div class="header-icons">
 
     <button id="themeBtn">
         <i class="fa-solid fa-sun"></i>
     </button>
 
-    <% if (usuario == null) { %>
+    <a href="login.jsp" title="Administrador">
+        <button>
+            <i class="fa-solid fa-user-shield"></i>
+        </button>
+    </a>
 
-        <a href="login.jsp">
-            <button>
-                <i class="fa-solid fa-user"></i>
-            </button>
-        </a>
-
-    <% } else { %>
-
-        <a href="trabajos.jsp">
-            <button title="<%= usuario.getNombre() %>">
-                <i class="fa-solid fa-user-check"></i>
-            </button>
-        </a>
-
-    <% } %>
+</div>
 
 </div>
 

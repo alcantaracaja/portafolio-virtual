@@ -549,16 +549,12 @@ body::after{
 
     border-color:var(--gold);
 }
-
-/* GRID SEMANAS */
-
-.weeks-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
+.week-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
 }
 
-/* CARD SEMANA */
 
 .week-card{
     background:rgba(12,21,36,.75);
@@ -578,6 +574,7 @@ body::after{
     overflow:hidden;
 }
 
+
 .week-card::before{
     content:"";
 
@@ -595,43 +592,37 @@ body::after{
         var(--gold),
         var(--gold-light)
     );
+
+    pointer-events:none;
 }
 
-.week-card:hover{
-    transform:translateY(-8px);
 
-    border-color:rgba(229,193,88,.5);
-
-    box-shadow:
-    0 0 25px rgba(229,193,88,.15);
+.archivos{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:15px;
 }
 
-.week-card span{
+
+.archivos span{
     color:var(--gold);
 
-    font-size:.75rem;
+    font-size:.85rem;
 
-    letter-spacing:2px;
+    font-weight:600;
 
-    text-transform:uppercase;
+    padding:6px 12px;
+
+    border:1px solid rgba(229,193,88,.25);
+
+    border-radius:8px;
 }
 
-.week-card h3{
-    font-size:3rem;
-
-    color:white;
-
-    margin:12px 0;
+.week-link{
+    position:relative;
+    z-index:2;
 }
-
-.week-card p{
-    color:var(--text-muted);
-
-    line-height:1.6;
-
-    font-size:.95rem;
-}
-
 /* ICONO FLECHA */
 
 .week-card .arrow{
